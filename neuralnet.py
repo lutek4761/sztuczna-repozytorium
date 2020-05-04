@@ -15,10 +15,10 @@ class Net:
 
             for neuron_index in range(topology[layer_index] + 1):  # +1 - dodanie neuronu z biasem
                 outputs_number = 0 if layer_index == len(topology) - 1 else topology[
-                                                                                layer_index + 1]  # +1 uwzglednienie biasu, ostatnia warstwa 0 polaczen
+                                                                                layer_index + 1]  # ostatnia warstwa 0 polaczen
                 self.layers[-1].append(Neuron(outputs_number,
                                               neuron_index))  # stworzenie neuronu, nadanie liczby polaczen i jego indeksu we wartstwie do identyfikacji
-            self.layers[-1][-1].set_output(1)  # ustawienie biasu na 1
+            self.layers[-1][-1].set_output(1.0)  # ustawienie biasu na 1
             print()
 
     def feed_forward(self, input_values):
