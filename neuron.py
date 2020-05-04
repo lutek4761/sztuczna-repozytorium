@@ -9,11 +9,11 @@ class Neuron:
         self.connections = []
         self.index = index
         self.gradient = 0
-        self.alpha = 0.5
-        self.eta = 0.15
+        self.momentum_rate = 0.5
+        self.learning_rate = 0.15
         for output_index in range(outputs_number):
             self.connections.append({"weight": self.random_weight(), "delta": 0.0})  # ustawienie wag losowo [0-1]
-        print(Neuron.softmax([2, 1, 0.1]))
+
 
     @staticmethod
     def random_weight():
@@ -65,7 +65,7 @@ class Neuron:
             neuron = layer_on_the_left[i]  # lecimy po wszystkich neuronach poprzedzajacej warstwy
             old_delta_weight = neuron.connections[self.index][
                 "delta"]  # poprzednia zmiana wagi pomiedzy rozwazanym neuronem a i-tym neuronem z warstwy poprzedniej
-            new_delta_weight = neuron.output_value * self.gradient * self.eta + self.alpha * old_delta_weight
+            new_delta_weight = neuron.output_value * self.gradient * self.learning_rate + self.momentum_rate * old_delta_weight
             neuron.connections[self.index]["weight"] -= new_delta_weight
             neuron.connections[self.index]["delta"] = new_delta_weight
             # print("N-{} w-{} delta={}".format(neuron.index, self.index, -new_delta_weight))
