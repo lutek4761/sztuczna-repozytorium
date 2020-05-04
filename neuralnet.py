@@ -91,8 +91,11 @@ class Net:
         self.error_table.clear()
 
     def show_output(self, target):
-        print("Output:", end=" ")
+        print("Output:          ", end=" ")
         for i in range(len((self.layers[-1])) - 1):
-            print("%.2f" % self.layers[-1][i].output_value, end="  ")
-        print("\nDesired outuput: {}\n".format(target))
+            print("%.4f" % self.layers[-1][i].output_value, end="  ")
+        print("\nDesired outuput: ", end=" ")
+        for i in range(len(target)):
+            print("%.4f" % target[i], end="  ")
+        print("\n")
 

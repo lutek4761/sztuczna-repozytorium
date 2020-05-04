@@ -28,7 +28,7 @@ def run():
     #print("Topology: {}".format(topology))
 
     my_net = Net(topology)
-    for i in range(20):
+    for i in range(100):
         print("Epoch {}".format(i))
         my_net.train(x_train, y_train)
         my_net.calc_total_error_of_one_epoch()

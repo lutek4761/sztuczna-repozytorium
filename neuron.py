@@ -10,7 +10,7 @@ class Neuron:
         self.index = index
         self.gradient = 0
         self.momentum_rate = 0.5
-        self.learning_rate = 0.15
+        self.learning_rate = 0.05
         for output_index in range(outputs_number):
             self.connections.append({"weight": self.random_weight(), "delta": 0.0})  # ustawienie wag losowo [0-1]
 
