@@ -28,13 +28,13 @@ def run():
     #print("Topology: {}".format(topology))
 
     my_net = Net(topology)
-    for i in range(100):
+    for i in range(500):
         print("Epoch {}".format(i))
         my_net.train(x_train, y_train)
         my_net.calc_total_error_of_one_epoch()
     plt.plot(range(len(my_net.overall_error_table)), my_net.overall_error_table)
     plt.xlabel("Epoch")
-    plt.ylabel("RMS_error")
+    plt.ylabel("Cost")
     plt.show()
 
     # test
@@ -42,8 +42,14 @@ def run():
     # for i in range(100):
     #     my_net.feed_forward([0.2, 0.1]) #<-input
     #     my_net.back_propagate([0.01, 0.99]) #<-target
-    #     my_net.feed_forward([0.8, 0.7])  # <-input
-    #     my_net.back_propagate([0.55, 0.12])  # <-target
+    #     # my_net.feed_forward([0.8, 0.7])  # <-input
+    #     # my_net.back_propagate([0.55, 0.12])  # <-target
+    #     # my_net.feed_forward([0.3, 0.7])  # <-input
+    #     # my_net.back_propagate([0.23, 0.55])  # <-target
+    #     # my_net.feed_forward([0.6, 0.1])  # <-input
+    #     # my_net.back_propagate([0.23, 0.99])  # <-target
+    #     # my_net.feed_forward([0.9, 0.9])  # <-input
+    #     # my_net.back_propagate([0.0, 0.0])  # <-target
 
 
 run()

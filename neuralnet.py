@@ -36,7 +36,7 @@ class Net:
             prev_layer = self.layers[layer_index - 1]
 
             for neuron_index in range(len(self.layers[layer_index]) - 1):
-                self.layers[layer_index][neuron_index].feed_forward(prev_layer)  # metoda feed forward neuronu sumuje wartosci z poprzedniej warstwy i poddaje je dzialaniu funkcji aktywacji
+                self.layers[layer_index][neuron_index].feed_forward(prev_layer, layer_index)  # metoda feed forward neuronu sumuje wartosci z poprzedniej warstwy i poddaje je dzialaniu funkcji aktywacji
 
         # for i in range(len(self.layers[-1]) - 1):  # wypisujemy bez biasu w outpucie
         #     print("Output {} = {}".format(i, self.layers[-1][i].output_value))
@@ -51,7 +51,7 @@ class Net:
         total_err = 0.0
         output_layer = self.layers[-1]
         for i in range(len(target)):
-            single_neuron_error = 0.5 * (target[i] - self.layers[-1][i].output_value) ** 2
+            single_neuron_error = 0.5 * (target[i] - output_layer[i].output_value) ** 2
             # print("Calculating error for output N{} = {}".format(i, single_neuron_error))
             total_err += single_neuron_error
             self.error_table.append(total_err)
